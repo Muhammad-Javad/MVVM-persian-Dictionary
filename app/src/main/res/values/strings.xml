@@ -1,0 +1,21 @@
+ <resources>
+
+    <string name="label_app_name">A Dic</string>
+    <string name="title_main_dictionary">فرهنگ لغت فارسی-انگلیسی</string>
+    <string name="label_home">خانه</string>
+    <string name="label_favorite">علاقمندی</string>
+    <string name="label_history">سابقه</string>
+    <string name="label_more">بیشتر</string>
+    <string name="label_home_no_result">بدون نتیجه</string>
+    <string name="label_home_type_word">کلمه ای را جست و جو کنید</string>
+    <string name="label_favorite_there_isnt_fav">هیچ علاقه ای وجود ندارد</string>
+    <string name="label_history_no_history">سابقه ای وجود ندارد</string>
+    <string name="text_detail_ok">تایید</string>
+    <string name="text_detail_no">نه</string>
+    <string name="text_history_clear_history">حذف سابقه</string>
+    <string name="text_more_source_code">کد برنامه</string>
+    <string name="text_more_share_this_app">اشتراک برنامه</string>
+    <string name="text_more_exit">خروج</string>
+    <string name="text_item_load_more" >بیشتر</string>
+
+ </resources>

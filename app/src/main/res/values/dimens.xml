@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_all_8dp">8dp</dimen>
+    <dimen name="margin_all_16dp">16dp</dimen>
+    <dimen name="padding_all_8dp">8dp</dimen>
+    <dimen name="padding_all_16dp">16dp</dimen>
+    <dimen name="text_size_all_16sp">16sp</dimen>
+    <dimen name="width_all_0dp">0dp</dimen>
+    <dimen name="height_all_0dp">0dp</dimen>
+    <dimen name="width_like_60dp">60dp</dimen>
+    <dimen name="height_like_60dp">60dp</dimen>
+    <dimen name="elevation_card_3dp">3dp</dimen>
+    <dimen name="height_card_100dp">100dp</dimen>
+    <dimen name="height_actionbar_45dp">45dp</dimen>
+    <dimen name="height_detail_15dp">15dp</dimen>
+    <dimen name="height_more_50dp">50dp</dimen>
+
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/back_all_corner">
+
+    <View
+        android:id="@+id/view_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_detail_15dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_detail_word_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_actionbar_45dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_detail_header" />
+
+    <TextView
+        android:id="@+id/textview_detail_search_word"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_actionbar_45dp"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_all_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_detail_header"
+        tools:text="Target" />
+
+    <TextView
+        android:id="@+id/textview_detail_meaning_word"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_actionbar_45dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_all_16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_detail_header"
+        tools:text="هدف" />
+
+    <TextView
+        android:scrollbars="vertical"
+        android:id="@+id/textview_detail_meanings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_all_8dp"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_detail_word_header" />
+
+    <Button
+        android:id="@+id/button_detail_ok"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        android:text="@string/text_detail_ok"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_detail_no" />
+
+    <Button
+        android:id="@+id/button_detail_no"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        android:text="@string/text_detail_no"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toRightOf="@id/button_detail_ok"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_detail_meanings" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
