@@ -10,9 +10,9 @@ As i mentioned earlier i use Room library for interact with my prepopulate datab
 ```
 ### Screenshot
 
-![img-1](/pic/pic_1.jpg)
-![img-2](/pic/pic_2.jpg)
-![img-3](/pic/pic_3.jpg)
+![img_1](/pic/pic_1.jpg)
+![img_2](/pic/pic_2.jpg)
+![img_3](/pic/pic_3.jpg)
 
 ### Resources
 [ViewBinding](https://developer.android.com/topic/libraries/view-binding)
