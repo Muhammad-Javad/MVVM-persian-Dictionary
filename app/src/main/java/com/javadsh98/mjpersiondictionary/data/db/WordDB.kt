@@ -41,7 +41,6 @@ abstract class WordDB : RoomDatabase() {
                 INSTANCE = Room.databaseBuilder(application, WordDB::class.java, "w_database")
 //                    .addCallback(WordCallBack(scope, application))
                     .addMigrations(migration)
-
                     .createFromAsset("database/word_db")
                     .build()
             return INSTANCE as WordDB
