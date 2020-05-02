@@ -17,5 +17,7 @@
     <string name="text_more_share_this_app">اشتراک برنامه</string>
     <string name="text_more_exit">خروج</string>
     <string name="text_item_load_more" >بیشتر</string>
+    <string name="text_no_internet_explorer">مرورگری موجود نیست</string>
+    <string name="text_share_via">اشتراک از طریق</string>
 
  </resources>
