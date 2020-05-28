@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.databinding.ActivityMainBinding
+import com.javadsh98.mjpersiondictionary.ui.main.fragment.FragmentFactoryImpl
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.favorite.FavoriteFragment
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.History.HistoryFragment
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.home.HomeFragment
@@ -32,6 +33,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //following code must before super.onCreate(savedInstanceState)
+        supportFragmentManager.fragmentFactory = FragmentFactoryImpl()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         root = binding.root
@@ -102,14 +106,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     fun initfragments(){
-        homeFragment = HomeFragment.newInstance()
-        homeFragment.retainInstance = true
-        favoriteFragment = FavoriteFragment.newInstance()
-        favoriteFragment.retainInstance = true
-        historyFragment = HistoryFragment.newInstance()
-        historyFragment.retainInstance = true
-        moreFragment = MoreFragment.newInstance()
-        moreFragment.retainInstance = true
+
+        homeFragment = supportFragmentManager
+            .fragmentFactory.instantiate(classLoader, HomeFragment::class.java.name) as HomeFragment
+        favoriteFragment = supportFragmentManager
+            .fragmentFactory.instantiate(classLoader, FavoriteFragment::class.java.name) as FavoriteFragment
+        historyFragment = supportFragmentManager
+            .fragmentFactory.instantiate(classLoader, HistoryFragment::class.java.name) as HistoryFragment
+        moreFragment = supportFragmentManager
+            .fragmentFactory.instantiate(classLoader, MoreFragment::class.java.name) as MoreFragment
     }
 
 }

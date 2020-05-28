@@ -14,10 +14,8 @@ import java.util.*
 
 class HomeViewModel(application: Application) : AndroidViewModel(application){
 
-    val TAG = HomeViewModel::class.java.simpleName
-
     var repository : Repository
-    var allWords: LiveData<List<Word>> = MutableLiveData<List<Word>>(listOf())
+    var allWords: LiveData<List<Word>> = MutableLiveData(listOf())
     var searchWord = ""
     var pageNumber : Int = 1
     var countNumber: Int = 25

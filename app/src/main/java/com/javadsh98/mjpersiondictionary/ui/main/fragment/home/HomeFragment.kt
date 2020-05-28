@@ -12,11 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
-import com.javadsh98.mjpersiondictionary.databinding.FragmentHomeBinding
 import com.javadsh98.mjpersiondictionary.ui.dialog.DetailCallback
 import com.javadsh98.mjpersiondictionary.ui.dialog.DetailDialog
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -24,46 +22,18 @@ import java.util.regex.Pattern
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallBack,
+class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, OnItemClickCallBack,
     DetailCallback {
 
     val RTL_CHARACTERS: Pattern =
         Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
 
-    var binding: FragmentHomeBinding? = null
     lateinit var viewmodel: HomeViewModel
-    lateinit var root: View
     var adapter: HomeAdapter? = null
     lateinit var detailDialog: DetailDialog
 
-//    var searchWord: String = ""
-
-    companion object{
-
-        var instance: HomeFragment? = null
-
-        fun newInstance(): HomeFragment{
-            if(instance == null){
-                instance = HomeFragment()
-            }
-            return instance!!
-        }
-
-    }
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        root = binding!!.root
-        return root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewmodel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
@@ -78,21 +48,10 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
             if(it != null)
                 it.observe(viewLifecycleOwner, Observer {
                     adapter!!.setList(it)
-                    /*
-                    if (it.isEmpty()) {
-                        showMessage()
-                    } else {
-                        hideMessage()
-                    }
-                     */
+
                 })
         }
 
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
@@ -102,7 +61,6 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
         return false
     }
 
-
     override fun onQueryTextSubmit(query: String?): Boolean {
 
         setSearchword(query!!)
@@ -110,7 +68,7 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
             searchPersian(query)
         else
             searchEnglish(query)
-        root.searchview_home_search.clearFocus()
+        searchview_home_search.clearFocus()
 
         return false
     }
@@ -135,8 +93,8 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
 
         adapter = HomeAdapter(this)
 
-        root.recyclerview_home_words.setHasFixedSize(true)
-        root.recyclerview_home_words.adapter = adapter
+        recyclerview_home_words.setHasFixedSize(true)
+        recyclerview_home_words.adapter = adapter
 
         var list = viewmodel.allWords.value
         if (!list!!.isEmpty()) {
@@ -145,11 +103,10 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
             getDefaultWord()
         }
 
-
     }
 
     private fun setupListener() {
-        root.searchview_home_search.setOnQueryTextListener(this)
+        searchview_home_search.setOnQueryTextListener(this)
     }
 
     override fun onLikeClick(word: Word) {
@@ -200,8 +157,5 @@ class HomeFragment: Fragment(), SearchView.OnQueryTextListener, OnItemClickCallB
         })
     }
 
-    fun log(line: String){
-        Log.d("DebugHomeFragment", "get default line ${line}")
-    }
 
 }

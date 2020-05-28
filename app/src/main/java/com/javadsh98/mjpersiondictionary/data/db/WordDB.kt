@@ -1,25 +1,16 @@
 package com.javadsh98.mjpersiondictionary.data.db
 
 import android.app.Application
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.google.gson.Gson
 import com.javadsh98.mjpersiondictionary.data.db.convertor.Converter
 import com.javadsh98.mjpersiondictionary.data.db.dao.WordDao
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
-import com.javadsh98.mjpersiondictionary.data.gson.Dictionary
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileReader
-import java.io.IOException
-import java.io.InputStream
-import java.nio.charset.Charset
 
 @Database(entities = arrayOf(Word::class) , version = 2, exportSchema = true )
 @TypeConverters(value = arrayOf(Converter::class))

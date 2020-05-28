@@ -3,54 +3,27 @@ package com.javadsh98.mjpersiondictionary.ui.main.fragment.more
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
-
+import androidx.fragment.app.Fragment
 import com.javadsh98.mjpersiondictionary.R
-import com.javadsh98.mjpersiondictionary.databinding.FragmentMoreBinding
-import java.lang.Exception
+import kotlinx.android.synthetic.main.fragment_more.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class MoreFragment: Fragment() {
+class MoreFragment: Fragment(R.layout.fragment_more) {
 
-    private var binding: FragmentMoreBinding? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    companion object{
-
-        var instance: MoreFragment? = null
-
-        fun newInstance(): MoreFragment{
-            if(instance == null){
-                instance = MoreFragment()
-            }
-            return instance!!
-        }
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentMoreBinding.inflate(inflater, container, false)
-        return binding!!.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        binding!!.textviewMoreSourceCode.setOnClickListener {
+        textview_more_source_code.setOnClickListener {
             openViaCustomTab()
         }
 
-        binding!!.textviewMoreShareSourceCode.setOnClickListener {
+        textview_more_share_source_code.setOnClickListener {
             ShareCompat.IntentBuilder.from(requireActivity())
                 .setType("text/plain")
                 .setChooserTitle(R.string.text_share_via)
@@ -58,7 +31,7 @@ class MoreFragment: Fragment() {
                 .startChooser()
         }
 
-        binding!!.textviewMoreExit.setOnClickListener {
+        textview_more_exit.setOnClickListener {
             requireActivity().finish()
         }
 
@@ -84,11 +57,6 @@ class MoreFragment: Fragment() {
         }catch (e: Exception){
             openViaIntent()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 
 }
