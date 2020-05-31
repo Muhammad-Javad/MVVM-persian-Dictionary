@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_history.*
 /**
  * A simple [Fragment] subclass.
  */
-class HistoryFragment(): Fragment(R.layout.fragment_history), OnItemClickCallBack {
+class HistoryFragment(): Fragment(R.layout.fragment_history) {
 
     //ui
     lateinit var adapter: HistoryAdapter
@@ -39,7 +39,7 @@ class HistoryFragment(): Fragment(R.layout.fragment_history), OnItemClickCallBac
     private fun setupViewmodel() {
 
         viewModel.getHistory().observe(viewLifecycleOwner, Observer {
-            adapter.setList(it)
+            adapter.submitList(it)
             if (it.isEmpty()){
                 showMessage()
             }else{
@@ -50,13 +50,12 @@ class HistoryFragment(): Fragment(R.layout.fragment_history), OnItemClickCallBac
 
     private fun setupRecyclerview() {
         var recyclerview = recyclerview_history_words
-        adapter = HistoryAdapter(this)
+        adapter = HistoryAdapter()
+        adapter.likeListener = {
+            viewModel.update(it)
+        }
         recyclerview.setHasFixedSize(true)
         recyclerview.adapter = adapter
-    }
-
-    override fun onLikeClick(word: Word) {
-        viewModel.update(word)
     }
 
     private fun showMessage(){

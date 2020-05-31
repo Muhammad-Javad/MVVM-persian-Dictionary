@@ -9,7 +9,7 @@ import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
-class FavoriteFragment(): Fragment(R.layout.fragment_favorite), OnItemClickCallBack {
+class FavoriteFragment(): Fragment(R.layout.fragment_favorite) {
 
     lateinit var viewmodel: FavoriteViewModel
     lateinit var adapter: FavoriteAdapter
@@ -27,7 +27,7 @@ class FavoriteFragment(): Fragment(R.layout.fragment_favorite), OnItemClickCallB
 
         viewmodel.searchFavorites().observe(viewLifecycleOwner, Observer {
 
-            adapter.setList(it)
+            adapter.submitList(it)
             if (it.isEmpty()) {
                 showMessage()
             } else {
@@ -46,13 +46,12 @@ class FavoriteFragment(): Fragment(R.layout.fragment_favorite), OnItemClickCallB
     }
 
     private fun setupRecycler() {
-        adapter = FavoriteAdapter(this)
+        adapter = FavoriteAdapter()
+        adapter.likeListener = {
+            viewmodel.update(it)
+        }
         recyclerview_favorite_favorites.setHasFixedSize(true)
         recyclerview_favorite_favorites.adapter = adapter
-    }
-
-    override fun onLikeClick(word: Word) {
-        viewmodel.update(word)
     }
 
 }

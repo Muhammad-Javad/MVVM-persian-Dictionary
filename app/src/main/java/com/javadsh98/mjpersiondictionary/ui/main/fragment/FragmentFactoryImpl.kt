@@ -7,7 +7,6 @@ import com.javadsh98.mjpersiondictionary.ui.main.fragment.favorite.FavoriteFragm
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.home.HomeFragment
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.more.MoreFragment
 
-
 class FragmentFactoryImpl : FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {

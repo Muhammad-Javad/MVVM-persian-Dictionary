@@ -22,8 +22,8 @@ import java.util.regex.Pattern
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, OnItemClickCallBack,
-    DetailCallback {
+class HomeFragment
+    : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, DetailCallback {
 
     val RTL_CHARACTERS: Pattern =
         Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
@@ -47,7 +47,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextList
         viewmodel.getAllWord().let {
             if(it != null)
                 it.observe(viewLifecycleOwner, Observer {
-                    adapter!!.setList(it)
+                    adapter!!.submitList(it)
 
                 })
         }
@@ -77,7 +77,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextList
 
         viewmodel.searchPersian(query!!).observe(viewLifecycleOwner, Observer {
             if(isEqualeSearchWord())
-                adapter!!.setList(it)
+                adapter!!.submitList(it)
         })
     }
 
@@ -85,20 +85,31 @@ class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextList
 
         viewmodel.searchEnglish(query!!).observe(viewLifecycleOwner, Observer {
             if (isEqualeSearchWord())
-                adapter!!.setList(it)
+                adapter!!.submitList(it)
         })
     }
 
     private fun setupRecycler() {
 
-        adapter = HomeAdapter(this)
+        adapter = HomeAdapter()
+        adapter!!.itemListener = {
+            openDialog(it)
+        }
+        adapter!!.likeListener = {
+            viewmodel.update(it)
+        }
+        adapter!!.moreListener = {
+            viewmodel.loadMore().observe(viewLifecycleOwner, Observer {
+                adapter!!.submitList(it)
+            })
+        }
 
         recyclerview_home_words.setHasFixedSize(true)
         recyclerview_home_words.adapter = adapter
 
         var list = viewmodel.allWords.value
         if (!list!!.isEmpty()) {
-            adapter!!.setList(list)
+            adapter!!.submitList(list)
         } else {
             getDefaultWord()
         }
@@ -109,21 +120,11 @@ class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextList
         searchview_home_search.setOnQueryTextListener(this)
     }
 
-    override fun onLikeClick(word: Word) {
-        viewmodel.update(word)
-    }
-
-    override fun onItemClick(word: Word) {
-        detailDialog = DetailDialog.newInstance(word, !isPersian(getSearchWord()), adapter!!.words)
+    private fun openDialog(word: Word) {
+        detailDialog = DetailDialog.newInstance(word, !isPersian(getSearchWord()), adapter!!.currentList)
         detailDialog.retainInstance = true
         detailDialog.setCallBack(this)
         detailDialog.show(childFragmentManager, "detail-dialog")
-    }
-
-    override fun onMoreClick() {
-        viewmodel.loadMore().observe(viewLifecycleOwner, Observer {
-            adapter!!.setList(it)
-        })
     }
 
     fun isPersian(str: String): Boolean{
@@ -153,9 +154,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), SearchView.OnQueryTextList
 
     fun getDefaultWord() {
         viewmodel.getDefaultWord().observe(viewLifecycleOwner, Observer {
-            adapter!!.setList(it)
+            adapter!!.submitList(it)
         })
     }
-
-
 }

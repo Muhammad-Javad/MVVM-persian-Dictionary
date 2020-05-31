@@ -2,13 +2,55 @@
 
     <!-- Base application theme. -->
 <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:fontFamily">@font/regular</item>
 
+<!--        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.AppTheme.SmallComponent</item>-->
+<!--        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.AppTheme.MediumComponent</item>-->
+<!--        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.AppTheme.LargeComponent</item>-->
+
+<!--        <item name="materialCardViewStyle">@style/Widget.AppTheme.MaterialCardView</item>-->
+<!--        <item name="android:textViewStyle">@style/Widget.AppTheme.TextView</item>-->
+
+    </style>
+
+    <style name="ShapeAppearance.AppTheme.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">@dimen/corner_app_4dp</item>
+    </style>
+
+    <style name="ShapeAppearance.AppTheme.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">@dimen/corner_app_4dp</item>
+    </style>
+
+    <style name="ShapeAppearance.AppTheme.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">@dimen/corner_app_4dp</item>
+    </style>
+
+    <style name="Widget.AppTheme.MaterialCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.AppTheme</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.AppTheme" parent="">
+        <item name="cornerSize">@dimen/corner_app_4dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+    <style name="Widget.AppTheme.TextView" parent="">
+        <item name="android:minHeight">@dimen/height_more_50dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_size_all_16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

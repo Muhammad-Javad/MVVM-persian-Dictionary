@@ -15,5 +15,6 @@
     <dimen name="height_actionbar_45dp">45dp</dimen>
     <dimen name="height_detail_15dp">15dp</dimen>
     <dimen name="height_more_50dp">50dp</dimen>
+    <dimen name="corner_app_4dp">4dp</dimen>
 
 </resources>
