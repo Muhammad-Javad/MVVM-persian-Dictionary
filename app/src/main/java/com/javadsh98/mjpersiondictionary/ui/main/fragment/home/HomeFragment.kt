@@ -9,9 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.javadsh98.mjpersiondictionary.R
-import com.javadsh98.mjpersiondictionary.data.db.entity.Word
-import com.javadsh98.mjpersiondictionary.ui.dialog.DetailCallback
-import com.javadsh98.mjpersiondictionary.ui.dialog.DetailDialog
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -28,7 +25,6 @@ class HomeFragment
 
     lateinit var viewmodel: HomeViewModel
     var adapter: HomeAdapter? = null
-    lateinit var detailDialog: DetailDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
