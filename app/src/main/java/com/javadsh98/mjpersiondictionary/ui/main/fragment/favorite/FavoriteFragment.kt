@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
 import kotlinx.android.synthetic.main.fragment_favorite.*
@@ -50,6 +51,15 @@ class FavoriteFragment(): Fragment(R.layout.fragment_favorite) {
         adapter.likeListener = {
             viewmodel.update(it)
         }
+        adapter.onItemClick = {
+            //update view count
+            ++it.viewCount
+            viewmodel.update(word = it)
+            //goto detail fragment
+            val action = FavoriteFragmentDirections.actionFavoriteFragment2ToDetailFragment3(it, it.englishWord)
+            findNavController().navigate(action)
+        }
+
         recyclerview_favorite_favorites.setHasFixedSize(true)
         recyclerview_favorite_favorites.adapter = adapter
     }

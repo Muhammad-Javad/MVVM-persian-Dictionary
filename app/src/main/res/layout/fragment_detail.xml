@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.fragment.detail.DetailFragment" >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_detail_persian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_all_8dp"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:helperText="persian meaning of the word"
+        app:hintEnabled="true"
+        android:hint="enter persian here">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittext_detail_persian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_detail_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_all_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textinputlayout_detail_persian"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        app:helperText="english meaning of the word"
+        app:hintEnabled="true"
+        android:hint="enter english here">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittext_detail_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout_detail_italian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_all_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textinputlayout_detail_english"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        app:helperText="italian meaning of the word"
+        app:hintEnabled="true"
+        android:hint="enter italian here">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittext_detail_italian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageview_detail_like"
+        android:layout_width="@dimen/width_like_60dp"
+        android:layout_height="@dimen/height_like_60dp"
+        android:padding="@dimen/padding_all_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textinputlayout_detail_italian"
+        app:srcCompat="@drawable/ic_all_dislike_24"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        android:layout_marginTop="@dimen/margin_all_8dp"/>
+
+    <Button
+        android:id="@+id/button_detail_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_all_8dp"
+        android:layout_marginRight="@dimen/margin_all_8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_detail_like"
+        app:layout_constraintEnd_toStartOf="@+id/imageview_detail_like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageview_detail_like"
+        android:text="edit"
+        android:textAllCaps="false"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history"
+    app:startDestination="@id/historyFragment2">
+
+    <fragment
+        android:id="@+id/historyFragment2"
+        android:name="com.javadsh98.mjpersiondictionary.ui.main.fragment.History.HistoryFragment"
+        android:label="@string/label_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment2_to_detailFragment4"
+            app:destination="@id/detailFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment4"
+        android:name="com.javadsh98.mjpersiondictionary.ui.main.fragment.detail.DetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="word"
+            app:argType="com.javadsh98.mjpersiondictionary.data.db.entity.Word" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+</navigation>

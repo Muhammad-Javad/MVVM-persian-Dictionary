@@ -2,14 +2,12 @@ package com.javadsh98.mjpersiondictionary.ui.main.fragment.home
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
 import com.javadsh98.mjpersiondictionary.ui.dialog.DetailCallback
@@ -23,7 +21,7 @@ import java.util.regex.Pattern
  * A simple [Fragment] subclass.
  */
 class HomeFragment
-    : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, DetailCallback {
+    : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 
     val RTL_CHARACTERS: Pattern =
         Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
@@ -37,9 +35,14 @@ class HomeFragment
 
         viewmodel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
+        setupSearchView()
         setupRecycler()
         setupListener()
         getPreviousData()
+    }
+
+    private fun setupSearchView() {
+        searchview_home_search.setQuery(viewmodel.searchWord, false)
     }
 
     fun getPreviousData() {
@@ -77,7 +80,9 @@ class HomeFragment
 
         viewmodel.searchPersian(query!!).observe(viewLifecycleOwner, Observer {
             if(isEqualeSearchWord())
+            {
                 adapter!!.submitList(it)
+            }
         })
     }
 
@@ -85,23 +90,24 @@ class HomeFragment
 
         viewmodel.searchEnglish(query!!).observe(viewLifecycleOwner, Observer {
             if (isEqualeSearchWord())
+            {
                 adapter!!.submitList(it)
+            }
         })
     }
 
     private fun setupRecycler() {
 
-        adapter = HomeAdapter()
+        if(adapter == null)
+            adapter = HomeAdapter()
+
         adapter!!.itemListener = {
-            openDialog(it)
-        }
-        adapter!!.likeListener = {
+            //insert to history
+            ++it.viewCount
             viewmodel.update(it)
-        }
-        adapter!!.moreListener = {
-            viewmodel.loadMore().observe(viewLifecycleOwner, Observer {
-                adapter!!.submitList(it)
-            })
+            //goto detail
+            val action = HomeFragmentDirections.actionHomeFragment2ToDetailFragment2(it, it.englishWord)
+            findNavController().navigate(action)
         }
 
         recyclerview_home_words.setHasFixedSize(true)
@@ -120,13 +126,6 @@ class HomeFragment
         searchview_home_search.setOnQueryTextListener(this)
     }
 
-    private fun openDialog(word: Word) {
-        detailDialog = DetailDialog.newInstance(word, !isPersian(getSearchWord()), adapter!!.currentList)
-        detailDialog.retainInstance = true
-        detailDialog.setCallBack(this)
-        detailDialog.show(childFragmentManager, "detail-dialog")
-    }
-
     fun isPersian(str: String): Boolean{
         val matcher: Matcher = RTL_CHARACTERS.matcher(str)
         return if (matcher.find())  true else  false
@@ -140,16 +139,6 @@ class HomeFragment
 
     fun isEqualeSearchWord(): Boolean{
         return TextUtils.equals(getSearchWord(), searchview_home_search.query)
-    }
-
-    override fun onOkClicked(word: Word) {
-        word.viewCount += 1
-        viewmodel.update(word)
-        detailDialog.dismiss()
-    }
-
-    override fun onNoClicked() {
-        detailDialog.dismiss()
     }
 
     fun getDefaultWord() {

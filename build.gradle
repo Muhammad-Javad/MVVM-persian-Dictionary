@@ -26,6 +26,7 @@ buildscript {
         def custom_tab_version = "1.2.0"
         def paging_version =   "2.1.2"
         def navigation_version = "2.1.0"
+//        def multidex_version = "2.0.1"
 
         Libraries = [
 
@@ -56,6 +57,7 @@ buildscript {
             "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
             "android.arch.navigation:navigation-ui-ktx:$navigation_version"
 
+//            , "androidx.multidex:multidex:$multidex_version"
         ]
 
         test = [

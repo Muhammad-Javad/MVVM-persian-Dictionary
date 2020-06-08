@@ -13,6 +13,7 @@ class FavoriteAdapter()
     : ListAdapter<Word, RecyclerView.ViewHolder>(HomeAdapter.diff){
 
     lateinit var likeListener: onItemClick
+    lateinit var onItemClick: onItemClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FavoriteHolder.create(parent)
@@ -20,7 +21,7 @@ class FavoriteAdapter()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FavoriteHolder)
-            holder.bind(getItem(position), likeListener)
+            holder.bind(getItem(position), onItemClick, likeListener)
     }
 
 

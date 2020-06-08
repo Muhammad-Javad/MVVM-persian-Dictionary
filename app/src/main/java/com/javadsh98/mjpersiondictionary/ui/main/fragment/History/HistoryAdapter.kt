@@ -1,15 +1,12 @@
 package com.javadsh98.mjpersiondictionary.ui.main.fragment.History
 
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.javadsh98.mjpersiondictionary.R
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
-import com.javadsh98.mjpersiondictionary.ui.main.fragment.favorite.FavoriteHolder
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.home.HomeAdapter
 import com.javadsh98.mjpersiondictionary.ui.main.fragment.home.onItemClick
 import kotlinx.android.synthetic.main.item_normal.view.*
@@ -24,8 +21,8 @@ class HistoryAdapter(): ListAdapter<Word, RecyclerView.ViewHolder>(HomeAdapter.d
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is FavoriteHolder){
-            holder.bind(getItem(position), likeListener)
+        if (holder is HistoryHolder){
+            holder.bind(getItem(position))
         }
     }
 
@@ -40,31 +37,32 @@ class HistoryAdapter(): ListAdapter<Word, RecyclerView.ViewHolder>(HomeAdapter.d
 
         }
 
-        fun bind(word: Word, likeListener : onItemClick) {
+        fun bind(word: Word) {
             itemView.textview_allrecycler_persian.text = word.persianWord
             itemView.textview_allrecycler_english.text = word.englishWord
 
+
             //like :
-            likeState(word)
-            likeOnClickListener(word, likeListener)
+//            likeState(word)
+//            likeOnClickListener(word, likeListener)
 
         }
-
-        private fun likeOnClickListener(word: Word, likeListener : onItemClick) {
-            itemView.imageview_allrecycler_like.setOnClickListener {
-                word.favorite = !word.favorite
-                word.date = Date(System.currentTimeMillis())
-                likeState(word)
-                likeListener.invoke(word)
-            }
-        }
-
-        private fun likeState(word: Word) {
-            if (word.favorite)
-                itemView.imageview_allrecycler_like.setImageResource(R.drawable.ic_all_like_24)
-            else
-                itemView.imageview_allrecycler_like.setImageResource(R.drawable.ic_all_dislike_24)
-        }
+//
+//        private fun likeOnClickListener(word: Word, likeListener : onItemClick) {
+//            itemView.imageview_detail_like.setOnClickListener {
+//                word.favorite = !word.favorite
+//                word.date = Date(System.currentTimeMillis())
+//                likeState(word)
+//                likeListener.invoke(word)
+//            }
+//        }
+//
+//        private fun likeState(word: Word) {
+//            if (word.favorite)
+//                itemView.imageview_detail_like.setImageResource(R.drawable.ic_all_like_24)
+//            else
+//                itemView.imageview_detail_like.setImageResource(R.drawable.ic_all_dislike_24)
+//        }
 
     }
 

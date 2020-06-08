@@ -8,42 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.javadsh98.mjpersiondictionary.data.db.entity.Word
 
 typealias onItemClick = (Word) -> Unit
-typealias onMoreClick = () -> Unit
 
 class HomeAdapter ()
-    : ListAdapter<Word, RecyclerView.ViewHolder>(diff){
+    : ListAdapter<Word, NormalHolder>(diff){
 
     lateinit var itemListener: onItemClick
-    lateinit var likeListener: onItemClick
-    lateinit var moreListener: onMoreClick
 
     private val NORMAL = 1
-    private val MORE = 2
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if(viewType == NORMAL)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NormalHolder {
             return NormalHolder.create(parent)
-        else
-            return MoreHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(holder is NormalHolder){
-            holder.bind(getItem(position), itemListener, likeListener)
-        }else if(holder is MoreHolder){
-            holder.bind(moreListener)
-        }
-    }
+    override fun onBindViewHolder(holder:NormalHolder, position: Int) {
+            holder.bind(getItem(position), itemListener)
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position < super.getItemCount())
-            NORMAL
-        else
-            MORE
-    }
-
-    override fun getItemCount(): Int {
-        return super.getItemCount() + 1
     }
 
     companion object{

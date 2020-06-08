@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeFragment2">
+
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.javadsh98.mjpersiondictionary.ui.main.fragment.home.HomeFragment"
+        android:label="@string/label_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_detailFragment2"
+            app:destination="@id/detailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment2"
+        android:name="com.javadsh98.mjpersiondictionary.ui.main.fragment.detail.DetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="word"
+            app:argType="com.javadsh98.mjpersiondictionary.data.db.entity.Word" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+    </fragment>
+</navigation>

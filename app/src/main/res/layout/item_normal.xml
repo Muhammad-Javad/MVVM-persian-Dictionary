@@ -36,16 +36,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageview_allrecycler_like"
-            android:layout_width="@dimen/width_like_60dp"
-            android:layout_height="@dimen/height_like_60dp"
-            android:layout_marginEnd="@dimen/padding_all_8dp"
-            android:padding="@dimen/padding_all_16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_all_dislike_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageview_detail_like"-->
+<!--            android:layout_width="@dimen/width_like_60dp"-->
+<!--            android:layout_height="@dimen/height_like_60dp"-->
+<!--            android:layout_marginEnd="@dimen/padding_all_8dp"-->
+<!--            android:padding="@dimen/padding_all_16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:srcCompat="@drawable/ic_all_dislike_24" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
