@@ -5,8 +5,9 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:viewBindingIgnore="true"
-    tools:context=".ui.main.fragment.home.HomeFragment">
+    android:layoutDirection="ltr"
+    tools:context=".ui.main.fragment.home.HomeFragment"
+    tools:viewBindingIgnore="true">
 
     <SearchView
         android:id="@+id/searchview_home_search"
@@ -34,15 +35,15 @@
         app:layout_constraintTop_toBottomOf="@+id/searchview_home_search"
         app:layout_constraintVertical_bias="0.0" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textview_home_message"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/label_home_type_word"-->
-<!--        android:textSize="@dimen/text_size_all_16sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_home_words"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/recyclerview_home_words"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/recyclerview_home_words" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textview_home_message"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/label_home_type_word"-->
+    <!--        android:textSize="@dimen/text_size_all_16sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_home_words"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/recyclerview_home_words"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/recyclerview_home_words" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

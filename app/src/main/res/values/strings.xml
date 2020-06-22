@@ -19,5 +19,9 @@
     <string name="text_item_load_more" >بیشتر</string>
     <string name="text_no_internet_explorer">مرورگری موجود نیست</string>
     <string name="text_share_via">اشتراک از طریق</string>
+     <string name="hint_detail_persian_word">"کلمه ی فارسی "</string>
+     <string name="hint_detail_english_word">کلمه ی انگلیسی</string>
+     <string name="hint_detail_italian_word">کلمه ی ایتالیایی</string>
+     <string name="hint_detail_edit">تغییر</string>
 
  </resources>

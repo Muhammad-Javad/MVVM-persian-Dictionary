@@ -5,8 +5,9 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:viewBindingIgnore="true"
-    tools:context=".ui.main.fragment.favorite.FavoriteFragment" >
+    android:layoutDirection="ltr"
+    tools:context=".ui.main.fragment.favorite.FavoriteFragment"
+    tools:viewBindingIgnore="true">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_favorite_favorites"
@@ -20,10 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:text="@string/label_favorite_there_isnt_fav"
         android:id="@+id/textview_favorite_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/label_favorite_there_isnt_fav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
