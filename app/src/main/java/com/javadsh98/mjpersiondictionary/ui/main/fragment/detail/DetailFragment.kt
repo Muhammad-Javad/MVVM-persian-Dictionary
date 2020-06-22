@@ -38,7 +38,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         //edittext
         edittext_detail_persian.setText(word.persianWord, TextView.BufferType.EDITABLE)
         edittext_detail_english.setText(word.englishWord, TextView.BufferType.EDITABLE)
-        edittext_detail_italian.setText(word.englishWord, TextView.BufferType.EDITABLE)
+        edittext_detail_italian.setText(word.italianWord, TextView.BufferType.EDITABLE)
 
         //like
         word.favorite.also {
@@ -59,6 +59,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             word = word.apply {
                 englishWord = edittext_detail_english.text.toString()
                 persianWord = edittext_detail_persian.text.toString()
+                italianWord = edittext_detail_italian.text.toString()
                 date = Date(System.currentTimeMillis())
             }
             viewModel.update(word)

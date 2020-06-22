@@ -40,6 +40,7 @@ class HistoryAdapter(): ListAdapter<Word, RecyclerView.ViewHolder>(HomeAdapter.d
         fun bind(word: Word) {
             itemView.textview_allrecycler_persian.text = word.persianWord
             itemView.textview_allrecycler_english.text = word.englishWord
+            itemView.textview_allrecycler_italian.text = word.italianWord
 
 
             //like :

@@ -24,6 +24,7 @@ class FavoriteHolder(var itemview: View): RecyclerView.ViewHolder(itemview){
     fun bind(word: Word, onItemListener: onItemClick, likeListener: onItemClick) {
         itemview.textview_allrecycler_persian.text = word.persianWord
         itemview.textview_allrecycler_english.text = word.englishWord
+        itemview.textview_allrecycler_italian.text = word.italianWord
 
         itemview.setOnClickListener { onItemListener(word) }
 

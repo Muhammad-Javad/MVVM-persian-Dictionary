@@ -21,6 +21,7 @@ class NormalHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(word: Word, itemClick: onItemClick){
         itemView.textview_allrecycler_persian.text = word.persianWord
         itemView.textview_allrecycler_english.text = word.englishWord
+        itemView.textview_allrecycler_italian.text = word.italianWord
 
 
         cardviewClickListener(word, itemClick)

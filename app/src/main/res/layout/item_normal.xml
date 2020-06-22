@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview_allrecycler_item"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_card_100dp"
@@ -21,8 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="سلام"
+            app:layout_constraintBottom_toTopOf="@+id/textview_allrecycler_english"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,21 +32,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:text="Hello"
+            app:layout_constraintBottom_toTopOf="@+id/textview_allrecycler_italian"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_allrecycler_persian" />
+
+        <TextView
+            android:id="@+id/textview_allrecycler_italian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="Hello"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageview_detail_like"-->
-<!--            android:layout_width="@dimen/width_like_60dp"-->
-<!--            android:layout_height="@dimen/height_like_60dp"-->
-<!--            android:layout_marginEnd="@dimen/padding_all_8dp"-->
-<!--            android:padding="@dimen/padding_all_16dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/ic_all_dislike_24" />-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_allrecycler_english" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
