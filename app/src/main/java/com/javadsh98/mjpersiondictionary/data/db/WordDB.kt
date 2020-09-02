@@ -52,8 +52,7 @@ abstract class WordDB : RoomDatabase() {
 //                    .addMigrations(migration1_3)
 //                    .addMigrations(migration2_3)
                     .fallbackToDestructiveMigration()
-//                    .createFromAsset("database/word_db")
-                    .createFromAsset("database/w_database")
+                    .createFromAsset("database/my_database")
                     .build()
             return INSTANCE as WordDB
         }

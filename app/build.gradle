@@ -5,6 +5,14 @@ apply plugin: "kotlin-kapt"
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\Muhammad Javad\\Desktop\\dictionary key\\dic_key.jks')
+            storePassword '123456'
+            keyAlias 'dic_key'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -30,6 +38,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
