@@ -1,4 +1,4 @@
-# MVVM-persion-Dictionary
+# MVVM-persian-Dictionary
 This is a english-persian dictionary that use MVVM design pattern and room library for sqlite data base .  
 ### Room
 As i mentioned earlier i use Room library for interact with my prepopulate database.
